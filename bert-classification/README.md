@@ -3,11 +3,9 @@
 
 eval:
 
-![image-20230528134758748](C:\Users\wushuo\AppData\Roaming\Typora\typora-user-images\image-20230528134758748.png)
+![image-20230528134738289](C:\Users\wushuo\AppData\Roaming\Typora\typora-user-images\image-20230528134738289.png)
 
 
-
-![image-20230528134633021](C:\Users\wushuo\AppData\Roaming\Typora\typora-user-images\image-20230528134633021.png)
 
 train:
 
