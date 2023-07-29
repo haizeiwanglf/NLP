@@ -2,7 +2,7 @@
 
 [ChatGLM-6B](https://github.com/THUDM/ChatGLM-6B) 是一个清华开源的、支持中英双语的对话语言模型，基于 [General Language Model (GLM)](https://github.com/THUDM/GLM) 架构，具有 62 亿参数。经过约 1T 标识符的中英双语训练，辅以监督微调、反馈自助、人类反馈强化学习等技术的加持，62 亿参数的 ChatGLM-6B 已经能生成相当符合人类偏好的回答。
 
-在医疗识别数据集中，本仓库实现了对于 ChatGLM-6B 模型基于 LoRA 和 P-Tuning v2 的参数高效微调。
+在医疗数据集中，本仓库实现了对于 ChatGLM-6B 模型基于 LoRA 和 P-Tuning v2 的参数高效微调，和freeze后几层的实现。
 
 数据集下载地址:[FreedomIntelligence/huatuo_knowledge_graph_qa · Datasets at Hugging Face](https://huggingface.co/datasets/FreedomIntelligence/huatuo_knowledge_graph_qa)
 
@@ -119,6 +119,19 @@ python cli_demo.py \
 ```
 
 
+
+## Freeze
+
+仅微调后几层的代码。
+
+```shell
+export CUDA_VISIBLE_DEVICES = 0, 1, 2, 3
+torchrun --nproc_per_node=4  train_freeze.py \
+--model_name_or_path /data/wuguangshuo/THUDMchatglm-6b/ \
+--data_path ./dataset/FreedomIntelligencehuatuo_knowledge_graph_qa/train_huatuo.json \
+--max_input_length 256 \
+--max_output_length 256
+```
 
 
 
