@@ -1,8 +1,8 @@
-# chatglm_tuning: 基于 LoRA 和 P-Tuning v2 的 ChatGLM-6B 高效参数微调
+# chatglm_tuning: 基于 ChatGLM-6B的三种 高效参数微调
 
 [ChatGLM-6B](https://github.com/THUDM/ChatGLM-6B) 是一个清华开源的、支持中英双语的对话语言模型，基于 [General Language Model (GLM)](https://github.com/THUDM/GLM) 架构，具有 62 亿参数。经过约 1T 标识符的中英双语训练，辅以监督微调、反馈自助、人类反馈强化学习等技术的加持，62 亿参数的 ChatGLM-6B 已经能生成相当符合人类偏好的回答。
 
-在医疗数据集中，本仓库实现了对于 ChatGLM-6B 模型基于 LoRA 和 P-Tuning v2 的参数高效微调，和freeze后几层的实现。
+在医疗数据集中，本仓库实现了对于 ChatGLM-6B 模型基于 LoRA ，freeze模型后几层和 P-Tuning v2 的参数高效微调。
 
 数据集下载地址:[FreedomIntelligence/huatuo_knowledge_graph_qa · Datasets at Hugging Face](https://huggingface.co/datasets/FreedomIntelligence/huatuo_knowledge_graph_qa)
 
@@ -95,8 +95,6 @@ chatglm_6b_ptuning.json 为训练参数配置文件：
 
 - 用随机高斯分布 $N(0,\sigma^2)$ 初始化 `A`，用全零矩阵初始化 `B`。矩阵 `B` 的全零初始化，使得在训练最开始的一段时间，右路的结果会接近于0，这样模块的输出就基本上来自于左路，也就是大模型原有参数的计算结果，这使得模型优化的初始点就和原始的大模型保持一致。
 
-
-
 运行如下命令进行单机多卡分布式训练：
 
 ```shell
@@ -122,7 +120,7 @@ python cli_demo.py \
 
 ## Freeze
 
-仅微调后几层的代码。
+仅微调模型后几层的代码。
 
 ```shell
 export CUDA_VISIBLE_DEVICES = 0, 1, 2, 3
