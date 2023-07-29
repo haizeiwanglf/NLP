@@ -77,10 +77,6 @@ chatglm_6b_ptuning.json 为训练参数配置文件：
 
 在 P-tuning v2 训练时模型只保存 PrefixEncoder 部分的参数，所以在推理时需要同时加载原 ChatGLM-6B 模型以及 PrefixEncoder 的权重。
 
-```shell
-
-```
-
 
 
 ## LoRA
